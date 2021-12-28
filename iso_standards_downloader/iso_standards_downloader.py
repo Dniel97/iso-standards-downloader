@@ -11,7 +11,7 @@ from tqdm import tqdm
 class IsoStandards:
     def __init__(self):
         self.BASE_URL = 'https://standards.iso.org'
-        self.PATH = './downloads/'
+        self.PATH = '../downloads/'
 
         self.s = requests.session()
         # jesus christ
@@ -118,24 +118,7 @@ class IsoStandards:
             else:
                 print('Unknown file type, skipping')
 
-    @click.command(
-        name='ISO-Standards-Downloader',
-        short_help='A python module to download ISO Standards from https://standards.iso.org/iso-iec',
-        context_settings=dict(
-            help_option_names=['-?', '-h', '--help']
-        ))
-    @click.argument(
-        'iso_url',
-        type=str
-    )
     def main(self, iso_url: str):
-        """
-        ISO_URL: Enter the URL from the ISO Standard you want to download: https://standards.iso.org/iso-iec
-
-        \f
-        :param iso_url: URL from https://standards.iso.org/iso-iec
-        :return: Nothing
-        """
         if not self.check_url(iso_url):
             print(f'Enter a valid ISO Standards URL starting with: {self.BASE_URL}')
             exit()
@@ -155,6 +138,31 @@ class IsoStandards:
         print('Download finished!')
 
 
+@click.command(
+    name='ISO-Standards-Downloader',
+    short_help='A python module to download ISO Standards from https://standards.iso.org/iso-iec',
+    context_settings=dict(
+        help_option_names=['-?', '-h', '--help']
+    ))
+@click.argument(
+    'iso_url',
+    type=str
+)
+def run(iso_url: str):
+    """
+    ISO_URL: Enter the URL from the ISO Standard you want to download: https://standards.iso.org/iso-iec
+
+    \f
+    :param iso_url: URL from https://standards.iso.org/iso-iec
+    :return: Nothing
+    """
+    try:
+        iso_standards = IsoStandards()
+        iso_standards.main(iso_url)
+    except KeyboardInterrupt:
+        print('\n\t^C pressed - abort')
+        exit()
+
+
 if __name__ == '__main__':
-    iso_standards = IsoStandards()
-    iso_standards.main()
+    run()

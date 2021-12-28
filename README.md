@@ -29,10 +29,9 @@ Follow these steps to get a local copy of iso-standards-downloader up and runnin
 * Python 3.6+ installed (with pip)
 
 ### Installation
-
 1. Execute:
    ```sh
-   pip3 install --user --upgrade "https://github.com/Dniel97/iso-standards-downloader/archive/master.zip"
+   pip3 install --user --upgrade "https://github.com/Dniel97/iso-standards-downloader/archive/refs/heads/master.zip"
    ```
    
 <!-- USAGE EXAMPLES -->
@@ -49,4 +48,4 @@ iso-standards-downloader "https://standards.iso.org/iso-iec/10646/ed-5/"
 
 Dniel97 - [@Dniel97](https://github.com/Dniel97)
 
-Project Link: [OrpheusDL Tidal Public GitHub Repository](https://github.com/Dniel97/orpheusdl-tidal)
+Project Link: [ISO Standards Downloader Public GitHub Repository](https://github.com/Dniel97/iso-standards-downloader)
